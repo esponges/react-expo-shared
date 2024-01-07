@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Provider } from 'react-redux';
 import { store } from './store/rtk-redux/store';
-import { Home } from './store/views/home';
+import { Home } from './views/home';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import client from './store/apollo/apollo-client';

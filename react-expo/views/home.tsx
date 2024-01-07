@@ -1,7 +1,7 @@
 // home view
 
 import { useState } from 'react';
-import { useGetPokemonByNameQuery } from '../rtk-redux/pokemon-service';
+import { useGetPokemonByNameQuery } from '../store/rtk-redux/pokemon-service';
 import { View, Text, TextInput, Button, Image } from 'react-native';
 import { gql, useQuery } from '@apollo/client';
 
