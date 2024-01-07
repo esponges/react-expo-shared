@@ -3,10 +3,20 @@
 import { useState } from 'react';
 import { useGetPokemonByNameQuery } from '../rtk-redux/pokemon-service';
 import { View, Text, TextInput, Button, Image } from 'react-native';
+import { gql, useQuery } from '@apollo/client';
 
 export const Home = () => {
   const [pokemonName, setPokemonName] = useState('');
   const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur');
+  const { data: apolloData, error: apolloError, loading: apolloLoading } = useQuery(gql`
+  query UserStats {
+    userStats {
+      connections
+      shares
+      prayers
+    }
+  }
+`);
 
   return (
     <View>
@@ -24,6 +34,11 @@ export const Home = () => {
           />
         </View>
       )}
+      {apolloLoading ? <Text>Apollo Loading...</Text> : null}
+      {apolloError ? <Text>Apollo Oops. Error:{apolloError.message}</Text> : null}
+      <Text>Connections: {apolloData?.userStats.connections}</Text>
+      <Text>Shares: {apolloData?.userStats.shares}</Text>
+      <Text>Prayers: {apolloData?.userStats.prayers}</Text>
     </View>
   );
 };

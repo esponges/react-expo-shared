@@ -3,17 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Provider } from 'react-redux';
 import { store } from './store/rtk-redux/store';
-import { Home } from './store/views/Home';
+import { Home } from './store/views/home';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-
-// Initialize Apollo Client
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache(),
-});
-
-console.log('apollo client', client);
+import client from './store/apollo/apollo-client';
 
 export default function App() {
   return (
